@@ -5,7 +5,9 @@ resource "aws_launch_template" "saturday_app_ha" {
   image_id      = var.ami
   instance_type = var.instance_type
    user_data              = filebase64("userdata.sh")
-
+iam_instance_profile {
+  name = aws_iam_instance_profile.satrurdsay_instance_profile.id
+}
 
   # Optional: root volume configuration
   block_device_mappings {
